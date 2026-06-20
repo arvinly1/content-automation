@@ -80,6 +80,10 @@ today_publish/
 
 发布时只需要复制标题和正文，上传封面，按清单检查。发布完成后，把链接和数据回填飞书 `发布复盘库`。
 
+## 定时生成
+
+见 [docs/windows-schedule.md](docs/windows-schedule.md)。
+
 ## 部署到 GitHub Pages
 
 见 [docs/github-pages.md](docs/github-pages.md)。
