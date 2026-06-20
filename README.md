@@ -47,8 +47,38 @@ $env:FEISHU_APP_SECRET = "xxx"
 - `output/drafts.json`：飞书待发布草稿
 - `output/publish_pack.md`：复制发布包
 - `output/covers/*.png`：平台封面
+- `today_publish/`：今天要手动发布的分平台文件夹
 - `public/articles/*.html`：静态文章页
 - `public/rss.xml`：RSS Feed
+
+## 每天发布
+
+运行流水线后，打开：
+
+```text
+today_publish/
+```
+
+里面会自动生成：
+
+```text
+today_publish/
+  01_toutiao/
+    title.txt
+    body.md
+    cover.png
+    checklist.md
+    meta.json
+  02_xiaohongshu/
+    title.txt
+    body.md
+    cover.png
+    tags.txt
+    checklist.md
+    meta.json
+```
+
+发布时只需要复制标题和正文，上传封面，按清单检查。发布完成后，把链接和数据回填飞书 `发布复盘库`。
 
 ## 部署到 GitHub Pages
 
