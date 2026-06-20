@@ -2,6 +2,7 @@
 
 这个项目用于把飞书里的待发布内容，自动整理成可发布资产：
 
+- 从 `content_drafts/` 推送本地 Markdown 草稿到飞书成稿库
 - 从飞书多维表格读取 `待发布` 草稿
 - 生成平台发布包 Markdown
 - 生成头条/小红书封面图
@@ -39,7 +40,7 @@ $env:FEISHU_APP_SECRET = "xxx"
 ## 一键生成
 
 ```powershell
-.\scripts\run_pipeline.ps1
+pwsh -NoProfile -ExecutionPolicy Bypass -File .\scripts\run_daily_publish.ps1
 ```
 
 输出目录：
@@ -50,6 +51,29 @@ $env:FEISHU_APP_SECRET = "xxx"
 - `today_publish/`：今天要手动发布的分平台文件夹
 - `public/articles/*.html`：静态文章页
 - `public/rss.xml`：RSS Feed
+
+## 本地草稿推送到飞书
+
+把新文章保存到 `content_drafts/*.md`，文件头部使用 front matter：
+
+```markdown
+---
+title: 文章标题
+platform: 头条
+format: 图文长文-待发布版
+status: 待发布
+cover_notes: 封面建议
+---
+正文内容
+```
+
+推送到飞书成稿库：
+
+```powershell
+pwsh -NoProfile -ExecutionPolicy Bypass -File .\scripts\push_local_drafts_to_feishu.ps1
+```
+
+脚本会按 `标题 + 平台` 去重，已存在的草稿会跳过；需要覆盖时加 `-Force`。
 
 ## 每天发布
 
@@ -76,13 +100,27 @@ today_publish/
     tags.txt
     checklist.md
     meta.json
+  03_toutiao/
+    ...
+  04_xiaohongshu/
+    ...
 ```
 
-发布时只需要复制标题和正文，上传封面，按清单检查。发布完成后，把链接和数据回填飞书 `发布复盘库`。
+如果当天有多篇同平台内容，会按顺序生成 `03_toutiao`、`04_xiaohongshu` 这类目录，不会互相覆盖。
+
+头条标题会自动压缩到 30 字以内。发布时只需要复制标题和正文，上传封面，按清单检查。发布完成后，把链接和数据回填飞书 `发布复盘库`。
 
 ## 定时生成
 
 见 [docs/windows-schedule.md](docs/windows-schedule.md)。
+
+推荐安装每天 10 点自动任务：
+
+```powershell
+.\scripts\install_windows_daily_task.ps1 -At 10:00
+```
+
+每天会自动运行 `scripts/run_daily_publish_reminder.ps1`，生成 `today_publish/`，打开 `publish-helper.html`，并提醒你人工发布和回填观察数据。
 
 ## 部署到 GitHub Pages
 

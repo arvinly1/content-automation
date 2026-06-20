@@ -1,4 +1,4 @@
-. "$PSScriptRoot\common.ps1"
+﻿. "$PSScriptRoot\common.ps1"
 
 $root = Get-ProjectRoot
 $draftPath = Join-Path $root "output\drafts.json"

@@ -1,4 +1,4 @@
-. "$PSScriptRoot\common.ps1"
+﻿. "$PSScriptRoot\common.ps1"
 
 $root = Get-ProjectRoot
 $outputDir = Join-Path $root "output"
@@ -13,7 +13,8 @@ $tableId = $config.Feishu.DraftTableId
 $uri = "https://open.feishu.cn/open-apis/bitable/v1/apps/$appToken/tables/$tableId/records?page_size=100"
 $resp = Invoke-RestMethod -Method Get -Uri $uri -Headers $headers
 
-$drafts = foreach ($item in $resp.data.items) {
+$drafts = @(
+foreach ($item in $resp.data.items) {
   $fields = $item.fields
   $status = Convert-PlainText $fields."状态"
   if ($status -ne "待发布") { continue }
@@ -29,6 +30,7 @@ $drafts = foreach ($item in $resp.data.items) {
     synced_at = (Get-Date).ToString("s")
   }
 }
+)
 
 $path = Join-Path $outputDir "drafts.json"
 $drafts | ConvertTo-Json -Depth 20 | Set-Content -Encoding UTF8 $path

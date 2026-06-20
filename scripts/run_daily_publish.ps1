@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+﻿$ErrorActionPreference = "Stop"
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $projectRoot
@@ -19,4 +19,4 @@ if (-not $env:SITE_BASE_URL) {
 
 Write-Host ""
 Write-Host "今日发布包已生成：$projectRoot\today_publish"
-Write-Host "打开 01_toutiao / 02_xiaohongshu，复制标题、正文并上传封面。"
+Write-Host "打开 today_publish\publish-helper.html，按顺序复制标题、正文并上传封面。"

@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+﻿$ErrorActionPreference = "Stop"
 
 function Get-ProjectRoot {
   Split-Path -Parent $PSScriptRoot
@@ -62,9 +62,13 @@ function Convert-PlainText {
 function New-Slug {
   param([string]$Text)
 
-  $hash = [System.BitConverter]::ToString(
-    [System.Security.Cryptography.SHA1]::HashData([System.Text.Encoding]::UTF8.GetBytes($Text))
-  ).Replace("-", "").Substring(0, 10).ToLowerInvariant()
+  $sha1 = [System.Security.Cryptography.SHA1]::Create()
+  try {
+    $bytes = [System.Text.Encoding]::UTF8.GetBytes($Text)
+    $hash = [System.BitConverter]::ToString($sha1.ComputeHash($bytes)).Replace("-", "").Substring(0, 10).ToLowerInvariant()
+  } finally {
+    $sha1.Dispose()
+  }
 
   return "post-$hash"
 }

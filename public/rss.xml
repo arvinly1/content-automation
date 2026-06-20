@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
     <title>程序员转型内容记录</title>
@@ -9,8 +9,15 @@
       <title>失业后我才明白：程序员最危险的不是35岁，而是只有工资这一种收入</title>
       <link>https://arvinly1.github.io/content-automation/articles/post-999668675b.html</link>
       <guid>https://arvinly1.github.io/content-automation/articles/post-999668675b.html</guid>
-      <pubDate>Sat, 20 Jun 2026 04:59:06 GMT</pubDate>
+      <pubDate>Sat, 20 Jun 2026 10:45:58 GMT</pubDate>
       <description>失业之后，我越来越觉得，程序员真正危险的可能不是35岁。 真正危险的是：你突然发现，自己过去很多年，几乎只有工资这一种收入。 以前上班的时候，我其实很少认真想这个问题。 每天早上起床、通勤、开会、写需求、改 bug、上线、复盘，生活被安排得很满。累是真的累，烦也是真的烦，但至少有一个固定节奏。 每个月工资到账，房租、房贷、社保、吃饭、家里开销，一项项扣掉。虽</description>
+    </item>
+    <item>
+      <title>我用AI搭了一个程序员选题库</title>
+      <link>https://arvinly1.github.io/content-automation/articles/post-108864ab66.html</link>
+      <guid>https://arvinly1.github.io/content-automation/articles/post-108864ab66.html</guid>
+      <pubDate>Sat, 20 Jun 2026 10:45:58 GMT</pubDate>
+      <description>最近失业之后，我没有一上来就逼自己每天写文章。 说实话，刚开始我也写不出来。 不是完全没有想法，而是脑子很乱。 一边要看招聘软件，一边要改简历，一边又会想：如果下一份工作没那么快来，我还能不能做点别的东西？ 我过去写代码、做项目、踩坑、上线、处理线上问题，这些经验除了继续找工作之外，还有没有别的价值？ 后来我给自己定了一个很小的目标： 先不急着变现，也先不急</description>
     </item>
   </channel>
 </rss>
